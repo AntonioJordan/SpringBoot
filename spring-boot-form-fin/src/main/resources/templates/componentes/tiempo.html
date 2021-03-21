@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+	<section th:fragment="interceptor">
+		<div class="alert alert-success">
+			<span th:text="'Tiempo transcurrido ' + ${tiempoTranscurrido}"></span>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,11 @@
+package com.bolsadeideas.springboot.di.app.models.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class MiServicioComplejo implements IServicio{
+	@Override
+	public String operacion() {
+		return "Ejecutando un proceso importantec...";
+	}
+}

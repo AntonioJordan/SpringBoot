@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body class="text-light container mt-3" style="background-color: black; color: aquamarine;">
+
+<!-- El parámetro es enviado mediante "name" y se recoge por la url -->
+
+    <h3 th:text="${titulo}" style="color: aquamarine;"></h3>
+    <hr style="border-color: aquamarine;">
+    <form th:action="@{/resultado}" th:object="${usuario}" method="POST" style="color: aquamarine;">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre" autocomplete="off" th:value="${usuario.nombre}">
+        <div class="form-text alert alert-danger p-2 col-6" role="alert" th:if="${error != null && error.containsKey('nombre')}" th:text="${error.nombre}"></div>
+        <div></div>
+      </div>
+      <div class="mb-3">
+        <label for="apellido" class="form-label">apellido</label>
+        <input type="text" th:field="*{apellido}" class="form-control" id="apellido" placeholder="apellido" autocomplete="off" th:value="${usuario.apellido}">
+        <div class="form-text alert alert-danger p-2 col-6" role="alert" th:if="${error != null && error.containsKey('apellido')}" th:text="${error.apellido}"></div>
+        <div></div>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" th:field="*{username}" class="form-control" id="username" placeholder="Username" autocomplete="off" th:value="${usuario.username}">
+        <div class="form-text alert alert-danger p-2 col-6" role="alert" th:if="${error != null && error.containsKey('username')}" th:text="${error.username}"></div>
+        <div></div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" th:field="*{password}" id="password" placeholder="Password">
+        <div class="form-text alert alert-danger p-2 col-6" role="alert" th:if="${error != null && error.containsKey('password')}" th:text="${error.password}"></div>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" style="color: white;" for="exampleCheck1">Check me out</label>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Email" autocomplete="off" th:value="${usuario.email}">
+        <div class="form-text alert alert-danger p-2 col-6" role="alert" th:if="${error != null && error.containsKey('email')}" th:text="${error.email}"></div>
+      </div>
+      <button type="submit" value="Enviar" class="btn btn-primary">Submit</button>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
