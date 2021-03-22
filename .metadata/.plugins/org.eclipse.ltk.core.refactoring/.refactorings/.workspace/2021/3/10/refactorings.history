@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Delete resource &apos;spring-boot-form&apos;" deleteContents="false" description="Delete resource &apos;spring-boot-form&apos;" element1="/spring-boot-form" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1615725891723"/>
-</session>
