@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,6 +16,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -28,50 +31,54 @@ public class Cliente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date createAt;
 
-	public final Long getId() {
+	@PrePersist
+	public void prePersist() {
+		createAt= new Date();
+	}
+	
+	public Long getId() {
 		return id;
 	}
 
-	public final void setId(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public final String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
-	public final void setNombre(String nombre) {
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public final String getApellido() {
+	public String getApellido() {
 		return apellido;
 	}
 
-	public final void setApellido(String apellido) {
+	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
 
-	public final String getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public final void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	public final Date getCreateAt() {
+	public Date getCreateAt() {
 		return createAt;
 	}
 
-	public final void setCreateAt(Date createAt) {
+	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
 
-	public static final long getSerialversionuid() {
+	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
-	private static final long serialVersionUID = 1L;
 
 }
