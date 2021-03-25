@@ -30,23 +30,30 @@
     <div class="container">
       <h1 style="color: aqua;">Listado de clientes</h1>
       <form th:action="@{/form}" th:object="${cliente}" method="POST" class="form-group">
-        <table class="col-md-4 table form-group" style="color: aqua;">
-            <tr>
-              <td>Nombre</td>
-              <td><input class="form-control" type="text" th:field="*{nombre}"/></td>
-            </tr>
-            <tr>
-              <td>Apellido</td>
-              <td><input class="form-control" type="text" th:field="*{apellido}"/></td>
-            </tr>
-            <tr>
-              <td>Email</td>
-              <td><input class="form-control" type="text" th:field="*{email}"/></td>
-            </tr>
-            <tr>
-              <td><input class="btn btn-success" type="submit" value="Crear cliente"/></td>
-            </tr>
-          </table>    
+          <div class="mb-3 col-md-4">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" th:errorclass="'form-control alert-danger'" th:field="*{nombre}">
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="apellido" class="form-label" >Apellido</label>
+            <input class="form-control" type="text" id="apellido" th:errorclass="'form-control alert-danger'" th:field="*{apellido}"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" type="text" id="email" th:errorclass="'form-control alert-danger'" th:field="*{email}"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+          </div>
+          <div class="mb-3 col-md-4">
+            <label for="createAt" class="form-label">Fecha</label>
+            <input class="form-control" type="text" th:field="*{createAt}" th:errorclass="'form-control alert-danger'" id="createAt"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+          </div>
+          <div class="mb-3">
+            <input class="btn btn-success" type="submit" value="Crear cliente"/>
+          </div>
+
           <input type="hidden" th:field="*{id}"/>
       </form>
     </div>
