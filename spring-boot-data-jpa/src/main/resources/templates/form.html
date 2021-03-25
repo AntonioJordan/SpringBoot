@@ -28,7 +28,7 @@
       </div>
     </nav>
     <div class="container">
-      <h1 style="color: aqua;">Listado de clientes</h1>
+      <h1 style="color: aqua;" th:text="${title}"></h1>
       <form th:action="@{/form}" th:object="${cliente}" method="POST" class="form-group">
           <div class="mb-3 col-md-4">
             <label for="nombre" class="form-label">Nombre</label>
