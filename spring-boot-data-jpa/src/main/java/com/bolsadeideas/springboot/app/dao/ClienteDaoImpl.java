@@ -18,12 +18,10 @@ public class ClienteDaoImpl implements IClienteDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
 		return em.createQuery("from Cliente").getResultList();
 	}
 
-	@Transactional
 	@Override
 	public void save(Cliente cliente) {
 		if(cliente.getId() != null && cliente.getId()>0) {
@@ -39,7 +37,6 @@ public class ClienteDaoImpl implements IClienteDao {
 	}
 
 	@Override
-	@Transactional
 	public void delete(Long id) {
 		em.remove(findOneById(id));
 	}

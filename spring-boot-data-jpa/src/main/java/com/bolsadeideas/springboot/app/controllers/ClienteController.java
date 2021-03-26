@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bolsadeideas.springboot.app.dao.IClienteDao;
+import com.bolsadeideas.springboot.app.dao.service.ClienteServiceImpl;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 @Controller
 public class ClienteController {
 
 	@Autowired
-	@Qualifier("clienteDaoJPA")
-	private IClienteDao clienteDao;
+	@Qualifier("clienteDaoServiceJPA")
+	private ClienteServiceImpl clienterServ;
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("title", "Listado de clientes");
-		model.addAttribute("clientes", clienteDao.findAll());
+		model.addAttribute("clientes", clienterServ.findAll());
 
 		return "listar";
 	}
@@ -45,7 +45,7 @@ public class ClienteController {
 	public String editar(@PathVariable(value="id") Long id, Model modelo) {
 		Cliente cliente = null;
 		if(id>0) {
-			cliente= clienteDao.findOneById(id);
+			cliente= clienterServ.findOneById(id);
 		} else {
 			modelo.addAttribute("title", "Listado de clientes");
 			return "redirect:/listar";
@@ -61,14 +61,14 @@ public class ClienteController {
 			model.addAttribute("title", "Formulario de cliente");
 			return "form";
 		}
-		clienteDao.save(cliente);
+		clienterServ.save(cliente);
 		return "redirect:listar";
 	}
 	
 	@GetMapping(value="eliminar/{id}")
 	public String eliminar(@PathVariable(value="id") Long id, Model modelo) {
 		if(id>0) {
-			clienteDao.delete(id);
+			clienterServ.delete(id);
 		}
 		return "redirect:/listar";
 	}
