@@ -15,20 +15,22 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "nombre_cliente")
 	@NotEmpty
 	private String nombre;
+	
 	@NotEmpty
 	private String apellido;
+	
 	@NotEmpty
 	@Email
 	private String email;
@@ -36,14 +38,8 @@ public class Cliente implements Serializable {
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createAt;
-
-
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
-				+ ", createAt=" + createAt + "]";
-	}
 
 	public Long getId() {
 		return id;
@@ -88,5 +84,7 @@ public class Cliente implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	private static final long serialVersionUID = 1L;
 
 }
