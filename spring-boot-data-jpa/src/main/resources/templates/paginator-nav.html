@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<nav th:fragment= "paginator">
+		<li>
+			<span th:if="${page.first}">primero</span>
+			<a th:if="${not page.first}" th:href="@{${page.url}(page=0)}">primero</a>
+		</li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li>
+			<span th:if="${page.last}">ultimo</span>
+			<a th:if="${not page.last}" th:href="@{${page.url}(page=${page.totalPagins - 1})}">ultimo</a>
+		</li>
+	</nav>
+</body>
+</html>
