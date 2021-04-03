@@ -9,9 +9,9 @@ import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 public interface IClienteService {
 	
-	public Page<Cliente> findAll(Pageable pageable);
-	
 	public List<Cliente> findAll();
+	
+	public Page<Cliente> findAll(Pageable pageable);
 
 	public void save(Cliente cliente);
 	

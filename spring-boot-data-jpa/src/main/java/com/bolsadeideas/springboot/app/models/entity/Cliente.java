@@ -35,15 +35,14 @@ public class Cliente implements Serializable {
 	@Email
 	private String email;
 
-	private String foto;
-	
-
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createAt;
 
+	private String foto;
+	
 	public Long getId() {
 		return id;
 	}
@@ -64,14 +63,6 @@ public class Cliente implements Serializable {
 		return apellido;
 	}
 
-	public String getFoto() {
-		return foto;
-	}
-	public void setFoto(String foto) {
-
-		this.foto = foto;
-	}
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
@@ -90,6 +81,14 @@ public class Cliente implements Serializable {
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
+	}
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public static long getSerialversionuid() {
