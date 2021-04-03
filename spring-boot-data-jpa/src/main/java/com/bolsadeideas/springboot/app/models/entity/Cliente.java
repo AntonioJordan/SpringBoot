@@ -35,6 +35,9 @@ public class Cliente implements Serializable {
 	@Email
 	private String email;
 
+	private String foto;
+	
+
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
@@ -59,6 +62,14 @@ public class Cliente implements Serializable {
 
 	public String getApellido() {
 		return apellido;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+
+		this.foto = foto;
 	}
 
 	public void setApellido(String apellido) {
