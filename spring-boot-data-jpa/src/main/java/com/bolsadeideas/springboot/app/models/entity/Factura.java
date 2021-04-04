@@ -29,7 +29,7 @@ public class Factura implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descripcion;
-	private String observación;
+	private String observacion;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "create_at")
 	private Date createAt;
@@ -88,10 +88,10 @@ public class Factura implements Serializable{
 		this.descripcion = descripcion;
 	}
 	public String getObservación() {
-		return observación;
+		return observacion;
 	}
 	public void setObservación(String observación) {
-		this.observación = observación;
+		this.observacion = observación;
 	}
 	public Date getCreateAt() {
 		return createAt;
