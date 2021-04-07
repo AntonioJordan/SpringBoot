@@ -58,6 +58,6 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	public List<Producto> findByNombre(String term) {
-		return productoDao.findByNombre(term);
+		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
 	}
 }

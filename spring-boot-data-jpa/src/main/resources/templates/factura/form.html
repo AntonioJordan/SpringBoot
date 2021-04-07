@@ -37,6 +37,8 @@
 							<input type="text" name="buscar_producto" id="buscar_producto" class="form-control">
 						</div>
 					</div>
+					<talbe th:replace="factura/plantilla-items :: itemsFactura"></talbe>
+
 					<div class="col-sm-6">
 						<input type="submit" th:value="${title}" class="btn btn-secondary">
 					</div>
