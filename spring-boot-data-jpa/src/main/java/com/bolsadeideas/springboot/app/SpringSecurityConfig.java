@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.bolsadeideas.springboot.app.auth.handler.LoginSuccessHandler;
+
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	
@@ -29,6 +31,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 			.withUser(users.username("toni").password("12345").roles("USER"));
 	}
 
+	@Autowired
+	private LoginSuccessHandler successHandler;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
@@ -45,7 +49,9 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 				.and()
 			.logout().permitAll()
 				.and()
-			.formLogin().loginPage("/login")
+			.formLogin()
+				.loginPage("/login")
+				.successHandler(successHandler)
 				.and()
 			.exceptionHandling().accessDeniedPage("/error_403");
 		
